@@ -14,7 +14,7 @@ func main() {
 
 	runtime.GOMAXPROCS(maxProcs)
 
-	beanCraft := scraper.Create("https://www.lemoncloud.org/bans/bans.php")
+	beanCraft := scraper.Create("https://www.lemoncloud.org/bans/")
 	beanCraft.Scrape(32, 0)
 
 }
