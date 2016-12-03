@@ -94,7 +94,7 @@ func (s *Scraper) getUserData(href string) {
 		Placed:     banTime,
 	}
 
-	s.addBanEntry(&banentry)
+	s.addBanEntry(banentry)
 
 }
 

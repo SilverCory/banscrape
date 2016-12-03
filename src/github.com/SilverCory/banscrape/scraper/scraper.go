@@ -123,6 +123,6 @@ func (s *Scraper) Scrape(threads, pages int) {
 
 }
 
-func (s *Scraper) addBanEntry(ban *BanEntry) {
-	s.ResultData = append(s.ResultData, *ban)
+func (s *Scraper) addBanEntry(ban BanEntry) {
+	s.ResultData = append(s.ResultData, ban)
 }
