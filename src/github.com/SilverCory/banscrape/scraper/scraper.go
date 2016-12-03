@@ -9,11 +9,13 @@ import (
 	"time"
 )
 
+// Scraper is the actual working code.
 type Scraper struct {
 	BansURL    string
 	ResultData []BanEntry
 }
 
+// BanEntry containins data about the ban.
 type BanEntry struct {
 	Placed     time.Time
 	Reason     string
@@ -21,6 +23,7 @@ type BanEntry struct {
 	IssuerUUID string
 }
 
+// Create Used to create the actual Scraper
 func Create(URL string) *Scraper {
 
 	if strings.HasSuffix(URL, "/") {
@@ -33,6 +36,7 @@ func Create(URL string) *Scraper {
 	}
 }
 
+// Scrape starts the actual scrape.
 func (s *Scraper) Scrape(threads, pages int) {
 
 	if pages < 1 {
@@ -123,6 +127,7 @@ func (s *Scraper) Scrape(threads, pages int) {
 
 }
 
+// Appends the ban to the ResultData
 func (s *Scraper) addBanEntry(ban BanEntry) {
 	s.ResultData = append(s.ResultData, ban)
 }

@@ -14,6 +14,7 @@ import (
 	"github.com/PuerkitoBio/goquery"
 )
 
+// Get bans form the page.. bad code warning.
 func (s *Scraper) getBansFromPages(min, max, threadID int, done func(int, int)) {
 
 	if min > max || max <= 0 {
@@ -44,6 +45,7 @@ func (s *Scraper) getBansFromPages(min, max, threadID int, done func(int, int)) 
 
 }
 
+// Process the page.
 func (s *Scraper) processPage(i int, selection *goquery.Selection) {
 
 	href, exists := selection.Find("td:nth-child(1) > a").Attr("href")
@@ -55,6 +57,7 @@ func (s *Scraper) processPage(i int, selection *goquery.Selection) {
 
 }
 
+// Get user data from the href.
 func (s *Scraper) getUserData(href string) {
 
 	if !strings.HasPrefix(href, "/") {
@@ -98,6 +101,7 @@ func (s *Scraper) getUserData(href string) {
 
 }
 
+// Get the total number of pages.
 func (s *Scraper) getTotalPages() int {
 
 	doc, err := goquery.NewDocument(s.BansURL + "/bans.php")
@@ -119,6 +123,7 @@ func (s *Scraper) getTotalPages() int {
 
 }
 
+// Finds the UUID from the anchor tag.
 func findUUID(UUIDContainer *goquery.Selection) (string, error) {
 
 	href, exists := UUIDContainer.Attr("href")
